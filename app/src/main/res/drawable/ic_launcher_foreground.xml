@@ -3,18 +3,26 @@
     android:height="108dp"
     android:viewportWidth="108"
     android:viewportHeight="108">
-    <!-- Outer glowing cyan console frame -->
-    <path
-        android:fillColor="#00000000"
-        android:strokeColor="#00E5FF"
-        android:strokeWidth="3.5"
-        android:pathData="M30,26 L78,26 C81.3,26 84,28.7 84,32 L84,76 C84,79.3 81.3,82 78,82 L30,82 C26.7,82 24,79.3 24,76 L24,32 C24,28.7 26.7,26 30,26 Z" />
-    <!-- Bold HyperDeck 'H' monogram -->
-    <path
-        android:fillColor="#00E5FF"
-        android:pathData="M37,37 L45,37 L45,50 L63,50 L63,37 L71,37 L71,71 L63,71 L63,58 L45,58 L45,71 L37,71 Z" />
-    <!-- Console power status bar -->
+    <!-- Left Pillar of 'H' -->
     <path
         android:fillColor="#FFFFFF"
-        android:pathData="M48,75 L60,75 L60,77.5 L48,77.5 Z" />
+        android:pathData="M30,26 L42,26 L42,82 L30,82 Z" />
+    <!-- Right Pillar of 'H' -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M66,26 L78,26 L78,82 L66,82 Z" />
+    <!-- Crossbar & Horizon Wave Lines -->
+    <path
+        android:fillColor="#3B82F6"
+        android:pathData="M42,52 L66,52 L66,57 L42,57 Z" />
+    <path
+        android:fillColor="#7C3AED"
+        android:pathData="M30,62 L78,62 L78,66 L30,66 Z" />
+    <path
+        android:fillColor="#3B82F6"
+        android:pathData="M30,70 L78,70 L78,74 L30,74 Z" />
+    <!-- Minimal Howling Wolf Silhouette Rising From Center -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M44,53 L47,42 L51,33 L53,27 L55,32 L58,28 L59,35 L64,39 L62,43 L58,43 L59,53 Z" />
 </vector>
