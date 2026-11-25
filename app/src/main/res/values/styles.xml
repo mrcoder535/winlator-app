@@ -21,17 +21,17 @@
         <item name="radioButtonStyle">@style/RadioButton</item>
     </style>
     <style name="AppThemeLight" parent="@style/AppThemeBase">
-        <item name="colorAccent">#00e5ff</item>
-        <item name="colorPrimary">#181c24</item>
-        <item name="colorPrimaryDark">#0d1015</item>
-        <item name="colorControlNormal">#78909c</item>
-        <item name="colorPrimaryText">#ffffff</item>
-        <item name="colorSecondaryText">#b0bec5</item>
-        <item name="colorPrimarySurface">#12151c</item>
-        <item name="colorSecondarySurface">#1e2430</item>
-        <item name="colorPrimaryVariant">#00b8d4</item>
-        <item name="colorSecondaryVariant">#263238</item>
-        <item name="colorError">#ff5252</item>
+        <item name="colorAccent">#7C3AED</item>
+        <item name="colorPrimary">#131826</item>
+        <item name="colorPrimaryDark">#090C15</item>
+        <item name="colorControlNormal">#64748B</item>
+        <item name="colorPrimaryText">#FFFFFF</item>
+        <item name="colorSecondaryText">#94A3B8</item>
+        <item name="colorPrimarySurface">#0B0E17</item>
+        <item name="colorSecondarySurface">#131826</item>
+        <item name="colorPrimaryVariant">#3B82F6</item>
+        <item name="colorSecondaryVariant">#1E293B</item>
+        <item name="colorError">#EF4444</item>
         <item name="popupMenuBackground">@drawable/content_dialog_background_dark</item>
         <item name="toolboxBackground">@drawable/toolbox_dark</item>
         <item name="panelBackground">@drawable/panel_background_dark</item>
@@ -39,17 +39,17 @@
         <item name="progressBarIndeterminateImage">@drawable/progress_bar_indeterminate_dark</item>
     </style>
     <style name="AppThemeDark" parent="@style/AppThemeBase">
-        <item name="colorAccent">#00e5ff</item>
-        <item name="colorPrimary">#181c24</item>
-        <item name="colorPrimaryDark">#0d1015</item>
-        <item name="colorControlNormal">#78909c</item>
-        <item name="colorPrimaryText">#ffffff</item>
-        <item name="colorSecondaryText">#b0bec5</item>
-        <item name="colorPrimarySurface">#12151c</item>
-        <item name="colorSecondarySurface">#1e2430</item>
-        <item name="colorPrimaryVariant">#00b8d4</item>
-        <item name="colorSecondaryVariant">#263238</item>
-        <item name="colorError">#ff5252</item>
+        <item name="colorAccent">#7C3AED</item>
+        <item name="colorPrimary">#131826</item>
+        <item name="colorPrimaryDark">#090C15</item>
+        <item name="colorControlNormal">#64748B</item>
+        <item name="colorPrimaryText">#FFFFFF</item>
+        <item name="colorSecondaryText">#94A3B8</item>
+        <item name="colorPrimarySurface">#0B0E17</item>
+        <item name="colorSecondarySurface">#131826</item>
+        <item name="colorPrimaryVariant">#3B82F6</item>
+        <item name="colorSecondaryVariant">#1E293B</item>
+        <item name="colorError">#EF4444</item>
         <item name="popupMenuBackground">@drawable/content_dialog_background_dark</item>
         <item name="toolboxBackground">@drawable/toolbox_dark</item>
         <item name="panelBackground">@drawable/panel_background_dark</item>
