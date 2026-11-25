@@ -192,9 +192,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         this.openFileCallback = openFileCallback;
     }
 
-    private boolean requestAppPermissions() {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED &&
-            ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) return false;
+        String[] permissions = new String[2];
+        permissions[0] = Manifest.permission.WRITE_EXTERNAL_STORAGE;
+        permissions[1] = Manifest.permission.READ_EXTERNAL_STORAGE;
+        ActivityCompat.requestPermissions(this, permissions, PERMISSION_WRITE_EXTERNAL_STORAGE_REQUEST_CODE);
 
         String[] permissions = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE};
         ActivityCompat.requestPermissions(this, permissions, PERMISSION_WRITE_EXTERNAL_STORAGE_REQUEST_CODE);
