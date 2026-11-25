@@ -202,10 +202,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
-        String[] permissions = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE};
-        ActivityCompat.requestPermissions(this, permissions, PERMISSION_WRITE_EXTERNAL_STORAGE_REQUEST_CODE);
-        return true;
-    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem menuItem) {
