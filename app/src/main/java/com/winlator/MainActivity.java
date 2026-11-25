@@ -232,7 +232,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (fragmentManager.getBackStackEntryCount() > 0) {
             fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
         }
-
+        
         switch (item.getItemId()) {
             case R.id.menu_item_shortcuts:
                 preferences.edit().putBoolean("show_shortcuts_first", true).apply();
