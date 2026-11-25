@@ -4,37 +4,162 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/DrawerLayout"
     android:fitsSystemWindows="true"
+    android:background="#0B0E17"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!-- Main Widescreen Console Frame -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:background="#0B0E17">
 
-        <androidx.appcompat.widget.Toolbar
-            android:layout_width="match_parent"
-            android:layout_height="?actionBarSize"
-            android:id="@+id/Toolbar"
-            app:layout_scrollFlags="enterAlways|scroll"
-            app:title="@string/app_name" />
-
-        <FrameLayout
-            android:id="@+id/FLFragmentContainer"
-            android:layout_width="match_parent"
+        <!-- Permanent Left HyperDeck Sidebar Rail -->
+        <LinearLayout
+            android:layout_width="200dp"
             android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+            android:orientation="vertical"
+            android:padding="12dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/hyperdeck_panel_bg">
+
+            <!-- Howling Wolf 'H' Logo + HyperDeck Brand Header -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:paddingTop="4dp"
+                android:paddingBottom="14dp">
+
+                <ImageView
+                    android:layout_width="54dp"
+                    android:layout_height="54dp"
+                    android:src="@drawable/ic_launcher_foreground"
+                    android:contentDescription="@string/app_name" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="HyperDeck"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="#FFFFFF" />
+            </LinearLayout>
+
+            <!-- Active Home / Games Pill -->
+            <TextView
+                android:id="@+id/NavHomeBtn"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center_vertical"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                android:layout_marginBottom="6dp"
+                android:text="Home  •  Games"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:background="@drawable/hyperdeck_pill_purple" />
+
+            <!-- Sidebar Quick Info / Tagline Card at Bottom -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:background="#0B0E17">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="HyperDeck"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:textColor="#FFFFFF" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Play More. Do More."
+                    android:textSize="11sp"
+                    android:textColor="#94A3B8" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Right Main Content Area -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <!-- Top Console Header Bar (Keeps Winlator Toolbar ID intact) -->
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/Toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/hyperdeck_panel_bg"
+                app:titleTextColor="#FFFFFF"
+                app:title="@string/app_name" />
+
+            <!-- Main Fragment Container (Loads Games / Containers / Settings) -->
+            <FrameLayout
+                android:id="@+id/FLFragmentContainer"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:padding="6dp"
+                android:background="@drawable/hyperdeck_panel_bg" />
+
+            <!-- Bottom Console Hardware & Status Bar -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:layout_marginTop="8dp"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:background="@drawable/hyperdeck_panel_bg">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="●  Ready to Play"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:textColor="#10B981" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="720p   |   ARM64   |   HyperDeck v1.0"
+                    android:textSize="12sp"
+                    android:textColor="#94A3B8" />
+            </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
 
+    <!-- Kept for Winlator Drawer Compatibility -->
     <com.google.android.material.navigation.NavigationView
+        android:id="@+id/NavigationView"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:id="@+id/NavigationView"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/main_menu_header"
-        app:itemIconTint="?attr/colorAccent"
-        app:itemTextColor="?attr/colorPrimaryText"
-        android:background="?attr/colorSecondarySurface"
+        app:itemIconTint="#7C3AED"
+        app:itemTextColor="#FFFFFF"
+        android:background="#131826"
         app:menu="@menu/main_menu"/>
 </androidx.drawerlayout.widget.DrawerLayout>
