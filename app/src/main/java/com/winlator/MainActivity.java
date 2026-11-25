@@ -7,9 +7,11 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import androidx.annotation.IntRange;
 import androidx.annotation.NonNull;
@@ -33,7 +35,7 @@ import com.winlator.core.PreloaderDialog;
 import com.winlator.xenvironment.RootFSInstaller;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    public static final boolean DEBUG_MODE = false; // FIXME change to false
+    public static final boolean DEBUG_MODE = false;
     public static final @IntRange(from = 1, to = 19) byte CONTAINER_PATTERN_COMPRESSION_LEVEL = 9;
     public static final byte PERMISSION_WRITE_EXTERNAL_STORAGE_REQUEST_CODE = 1;
     public static final byte OPEN_FILE_REQUEST_CODE = 2;
@@ -72,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             navigationView.setCheckedItem(R.id.menu_item_input_controls);
         }
         else {
-            boolean showShortcutsFirst = preferences.getBoolean("show_shortcuts_first", false);
+            boolean showShortcutsFirst = preferences.getBoolean("show_shortcuts_first", true);
             int selectedMenuItemId = intent.getIntExtra("selected_menu_item_id", 0);
             int menuItemId = selectedMenuItemId > 0 ? selectedMenuItemId : (showShortcutsFirst ? R.id.menu_item_shortcuts : R.id.menu_item_containers);
 
@@ -87,7 +89,52 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 showFragment(new ContainerFileManagerFragment(containerId, startPath));
             }
         }
+
+        setupHyperDeckSidebar(navigationView);
     }
+
+    private void setupHyperDeckSidebar(NavigationView navigationView) {
+        TextView navGames = findViewById(R.id.NavGamesBtn);
+        TextView navContainers = findViewById(R.id.NavContainersBtn);
+        TextView navControls = findViewById(R.id.NavControlsBtn);
+        TextView navSettings = findViewById(R.id.NavSettingsBtn);
+        TextView navAbout = findViewById(R.id.NavAboutBtn);
+        if (navGames == null) return;
+
+        java.util.List<TextView> tabs = java.util.Arrays.asList(navGames, navContainers, navControls, navSettings);
+
+        java.util.function.Consumer<TextView> selectTab = active -> {
+            for (TextView t : tabs) {
+                t.setBackground(null);
+                t.setTextColor(0xFF94A3B8);
+                t.setTypeface(null, Typeface.NORMAL);
+            }
+            active.setBackgroundResource(R.drawable.hyperdeck_pill_purple);
+            active.setTextColor(0xFFFFFFFF);
+            active.setTypeface(null, Typeface.BOLD);
+        };
+
+        navGames.setOnClickListener(v -> {
+            selectTab.accept(navGames);
+            onNavigationItemSelected(navigationView.getMenu().findItem(R.id.menu_item_shortcuts));
+        });
+        navContainers.setOnClickListener(v -> {
+            selectTab.accept(navContainers);
+            onNavigationItemSelected(navigationView.getMenu().findItem(R.id.menu_item_containers));
+        });
+        navControls.setOnClickListener(v -> {
+            selectTab.accept(navControls);
+            onNavigationItemSelected(navigationView.getMenu().findItem(R.id.menu_item_input_controls));
+        });
+        navSettings.setOnClickListener(v -> {
+            selectTab.accept(navSettings);
+            onNavigationItemSelected(navigationView.getMenu().findItem(R.id.menu_item_settings));
+        });
+        navAbout.setOnClickListener(v -> {
+            onNavigationItemSelected(navigationView.getMenu().findItem(R.id.menu_item_about));
+        });
+    }
+
 
     @Override
     protected void attachBaseContext(Context newBase) {
@@ -98,7 +145,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == PERMISSION_WRITE_EXTERNAL_STORAGE_REQUEST_CODE) {
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            boolean granted = java.util.Arrays.stream(grantResults).anyMatch(r -> r == PackageManager.PERMISSION_GRANTED);
+            if (granted) {
                 RootFSInstaller.installIfNeeded(this);
             }
             else finish();
